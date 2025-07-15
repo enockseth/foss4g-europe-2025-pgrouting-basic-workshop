@@ -228,3 +228,58 @@ FROM pgr_dijkstra(
 
 Download OSM data: <https://download.geofabrik.de/europe/andorra.html>
 Create topology: <https://workshop.pgrouting.org/2.2.10/en/chapters/topology.html>
+
+```sql
+ALTER TABLE
+    road_clip
+ADD
+    COLUMN "length" double PRECISION;
+
+ALTER TABLE
+    road_clip
+ADD
+    COLUMN "source" integer;
+
+ALTER TABLE
+    road_clip
+ADD
+    COLUMN "target" integer;
+
+SELECT * FROM road_clip;
+
+-- set length
+UPDATE
+ road_clip
+SET
+ length = ST_Length(geom);
+
+
+-- Begin from noded network
+SELECT
+ -- 0.01 worked great
+ pgr_nodeNetwork(
+  'road_clip',
+  0.00001,
+  the_geom := 'geom',
+  id := 'id'
+ );
+
+
+
+-- Run topology again after fixing network
+SELECT
+ pgr_createTopology(
+  'road_clip_noded',
+  0.00001,
+  'geom',
+  clean := TRUE
+ );
+
+-- Analyze graph
+SELECT
+ pgr_analyzeGraph(
+  'road_clip_noded',
+  0.00001,
+  the_geom := 'geom'
+ );
+```
