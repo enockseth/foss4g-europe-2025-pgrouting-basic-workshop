@@ -109,6 +109,7 @@ ORDER BY osm_id;
  Most Bunur|8108606186 | 3803
 ---
 ## Exercise 1: Single Pedestrian Routing
+- Walk from `Most Bunur` to `Faculty of Humanities and Social Sciences`
 ```sql
 SELECT * FROM pgr_dijkstra(
   '
@@ -118,12 +119,13 @@ SELECT * FROM pgr_dijkstra(
       length AS cost
     FROM ways
   ',
-  2520,
   3803,
+  2520,
   directed := false);
 ```
 ---
 ## Exercise 2: Many Pedestrians going to the same destination¶
+- Walk from `Most Bunur` and `Most Musala` to `Faculty of Humanities and Social Sciences`
 ```sql
 SELECT * FROM pgr_dijkstra(
   '
@@ -133,7 +135,25 @@ SELECT * FROM pgr_dijkstra(
       length_m AS cost
     FROM ways
   ',
-  ARRAY[3803,23872],
-  717,
+  ARRAY[3803,49],
+  2520,
   directed := false);
 ```
+
+---
+## Exercise 3: Many Pedestrians going to different destinations
+- - Walk from `Most Bunur` and `Most Musala` to `Faculty of Humanities and Social Sciences` and `Spanish Square`
+- Cost: minutes
+```sql
+SELECT * FROM pgr_dijkstra(
+  '
+    SELECT gid AS id,
+      source,
+      target,
+      length_m / 1.3 / 60 AS cost -- line 6
+    FROM ways
+  ',
+  ARRAY[3803,49],
+  ARRAY[2520, 12712], -- line 10
+  directed := false);
+  ```
