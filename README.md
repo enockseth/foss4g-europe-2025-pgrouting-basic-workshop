@@ -162,13 +162,18 @@ SELECT * FROM pgr_dijkstra(
 ## Bring your own data
 In this section we will focus on reusing your own data 
 
-## Scratch pad
-Join with geometry
+## Join Geometry
 ```sql
-SELECT gid, ST_AsText(the_geom)
-FROM pgr_dijkstra(
-  'SELECT gid AS id, source, target, cost, reverse_cost FROM ways',
-  1001, 2050, false
-) AS route
-JOIN ways ON route.edge = ways.gid;
-```
+  SELECT * FROM pgr_dijkstra(
+  '
+    SELECT gid AS id,
+      source,
+      target,
+      length_m / 1.3 / 60 AS cost -- line 6
+    FROM ways
+  ',
+  ARRAY[3803,49],
+  ARRAY[2520, 12712], -- line 10
+  directed := false) AS route
+  JOIN ways ON route.edge = ways.gid;
+  ```
