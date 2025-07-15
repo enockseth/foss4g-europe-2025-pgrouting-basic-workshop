@@ -16,6 +16,7 @@
 * <https://en.osm.town/@Enock4seth>
 
 ## 📋 What we will learn
+
 * Installing pgRouting and PostGIS
 * Importing OSM road data
 * Creating a routing topology
@@ -38,6 +39,7 @@
 ---
 
 ## Software
+
 * OSGeoLive
 * Your own server
 * Local server
@@ -123,6 +125,7 @@ ORDER BY osm_id;
 ---
 
 ## Exercise 1: Single Pedestrian Routing
+
 * Walk from `Most Bunur` to `Faculty of Humanities and Social Sciences`
 
 ```sql
@@ -142,6 +145,7 @@ SELECT * FROM pgr_dijkstra(
 ---
 
 ## Exercise 2: Many Pedestrians going to the same destination¶
+
 * Walk from `Most Bunur` and `Most Musala` to `Faculty of Humanities and Social Sciences`
 
 ```sql
@@ -161,6 +165,7 @@ SELECT * FROM pgr_dijkstra(
 ---
 
 ## Exercise 3: Many Pedestrians going to different destinations
+
 * * Walk from `Most Bunur` and `Most Musala` to `Faculty of Humanities and Social Sciences` and `Spanish Square`
 * Cost: minutes
 
@@ -219,3 +224,6 @@ FROM pgr_dijkstra(
 
 ```
 
+## Bring your own data
+
+Download OSM data: <https://download.geofabrik.de/europe/andorra.html>
