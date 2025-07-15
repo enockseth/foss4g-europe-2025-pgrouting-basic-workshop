@@ -1,5 +1,7 @@
 #  pgRouting Basic Workshop
 
+**NOTE: MOST OF THIS TEXT IS DERIVED FROM [workshop.pgrouting.org](https://workshop.pgrouting.org)**
+
 [FOSS4G 2025 Workshop Mostar (Bosnia-Herzegovina)](https://2025.europe.foss4g.org/)
 
 ![FOSS4G 2025 Workshop Mostar (Bosnia-Herzegovina)](img/foss4g-europe-2025.png ) ![](img/pgrouting.png)
@@ -8,7 +10,6 @@
 
 
 [![Creative Commons License](http://i.creativecommons.org/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
-
 
 ## Enock Seth Nyamador
 
@@ -42,7 +43,7 @@
 - OSGeoLive
 - Your own server
 - Local server
-- Create a virtualbox https://workshop.pgrouting.org/3.0/en/general-intro/osgeolive.html
+- [Create a virtualbox](https://workshop.pgrouting.org/3.0/en/general-intro/osgeolive.html)
 
 ## Install PostgreSQL and all
 ```bash
