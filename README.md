@@ -227,3 +227,4 @@ FROM pgr_dijkstra(
 ## Bring your own data
 
 Download OSM data: <https://download.geofabrik.de/europe/andorra.html>
+Create topology: <https://workshop.pgrouting.org/2.2.10/en/chapters/topology.html>
