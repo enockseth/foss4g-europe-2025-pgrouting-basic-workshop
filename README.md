@@ -158,3 +158,17 @@ SELECT * FROM pgr_dijkstra(
   ARRAY[2520, 12712], -- line 10
   directed := false);
   ```
+
+## Bring your own data
+In this section we will focus on reusing your own data 
+
+## Scratch pad
+Join with geometry
+```sql
+SELECT gid, ST_AsText(the_geom)
+FROM pgr_dijkstra(
+  'SELECT gid AS id, source, target, cost, reverse_cost FROM ways',
+  1001, 2050, false
+) AS route
+JOIN ways ON route.edge = ways.gid;
+```
